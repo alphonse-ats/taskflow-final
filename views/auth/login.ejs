@@ -1,0 +1,26 @@
+<div class="auth-wrap">
+  <div class="auth-card">
+    <h2>Bienvenido de vuelta</h2>
+    <p class="subtitle">Ingresa para gestionar tus tareas</p>
+
+    <% if (typeof errors !== 'undefined') { %>
+      <ul class="errors">
+        <% errors.forEach(e => { %><li><%= e.msg %></li><% }) %>
+      </ul>
+    <% } %>
+
+    <form action="/auth/login" method="POST">
+      <label>Email
+        <input type="email" name="email" placeholder="tu@email.com" required>
+      </label>
+      <label>Contraseña
+        <input type="password" name="password" placeholder="••••••••" required>
+      </label>
+      <button type="submit" class="btn">Entrar</button>
+    </form>
+
+    <p class="form-footer">
+      ¿No tienes cuenta? <a href="/auth/register">Crea una gratis</a>
+    </p>
+  </div>
+</div>

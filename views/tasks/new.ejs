@@ -1,0 +1,27 @@
+<div class="form-card">
+  <h2>Nueva tarea</h2>
+  <form action="/tasks" method="POST">
+    <label>Título
+      <input type="text" name="title" placeholder="Ej: Terminar el proyecto final" required minlength="3" maxlength="100">
+    </label>
+    <label>Descripción
+      <textarea name="description" placeholder="Añade detalles opcionales..." maxlength="500"></textarea>
+    </label>
+    <label>Estado
+      <select name="status">
+        <option value="pending">Pendiente</option>
+        <option value="in-progress">En progreso</option>
+        <option value="done">Hecha</option>
+      </select>
+    </label>
+    <label>Prioridad
+      <select name="priority">
+        <option value="low">Baja</option>
+        <option value="medium" selected>Media</option>
+        <option value="high">Alta</option>
+      </select>
+    </label>
+    <button type="submit" class="btn">Crear tarea</button>
+  </form>
+  <p class="form-footer"><a href="/tasks">← Volver a la lista</a></p>
+</div>

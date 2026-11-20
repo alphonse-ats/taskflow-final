@@ -1,0 +1,58 @@
+<div class="toolbar">
+  <h2>Mis Tareas</h2>
+  <a class="btn" href="/tasks/new">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <path d="M12 5v14M5 12h14"/>
+    </svg>
+    Nueva tarea
+  </a>
+</div>
+
+<% if (tasks.length === 0) { %>
+  <div class="empty">
+    <div class="icon">📝</div>
+    <h3 style="margin-bottom:.5rem">No tienes tareas todavía</h3>
+    <p>Crea tu primera tarea y empieza a organizarte.</p>
+    <a class="btn" href="/tasks/new">Crear tarea</a>
+  </div>
+<% } else { %>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Estado</th>
+          <th>Prioridad</th>
+          <th>Dueño</th>
+          <th style="text-align:right">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% tasks.forEach(t => { %>
+          <tr>
+            <td><a href="/tasks/<%= t._id %>"><%= t.title %></a></td>
+            <td><span class="badge <%= t.status %>"><%= t.status %></span></td>
+            <td><span class="priority <%= t.priority %>"><%= t.priority %></span></td>
+            <td style="color:var(--text-muted)"><%= t.owner.name %></td>
+            <td>
+              <div class="actions" style="justify-content:flex-end">
+                <a href="/tasks/<%= t._id %>/edit">Editar</a>
+                <form action="/tasks/<%= t._id %>?_method=DELETE" method="POST" style="display:inline;margin:0">
+                  <button type="submit" onclick="return confirm('¿Eliminar esta tarea?')">Borrar</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+  <% if (totalPages > 1) { %>
+    <div class="pagination">
+      <% for (let i = 1; i <= totalPages; i++) { %>
+        <a href="/tasks?page=<%= i %>" class="<%= i === page ? 'active' : '' %>"><%= i %></a>
+      <% } %>
+    </div>
+  <% } %>
+<% } %>

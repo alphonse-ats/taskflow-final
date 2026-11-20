@@ -1,0 +1,36 @@
+<div class="detail-card">
+  <h2><%= task.title %></h2>
+
+  <div class="detail-grid">
+    <div class="item">
+      <div class="label">Estado</div>
+      <div class="value"><span class="badge <%= task.status %>"><%= task.status %></span></div>
+    </div>
+    <div class="item">
+      <div class="label">Prioridad</div>
+      <div class="value"><span class="priority <%= task.priority %>"><%= task.priority %></span></div>
+    </div>
+    <div class="item">
+      <div class="label">Dueño</div>
+      <div class="value"><%= task.owner.name %></div>
+    </div>
+    <div class="item">
+      <div class="label">Creada</div>
+      <div class="value"><%= task.createdAt.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' }) %></div>
+    </div>
+  </div>
+
+  <% if (task.description) { %>
+    <div class="detail-desc"><%= task.description %></div>
+  <% } else { %>
+    <p style="color:var(--text-muted);margin-bottom:1.5rem;font-style:italic">Sin descripción.</p>
+  <% } %>
+
+  <div class="detail-actions">
+    <a class="btn" href="/tasks/<%= task._id %>/edit">Editar</a>
+    <a class="btn btn-secondary" href="/tasks">← Volver</a>
+    <form action="/tasks/<%= task._id %>?_method=DELETE" method="POST" style="margin:0;margin-left:auto">
+      <button type="submit" class="btn btn-danger" onclick="return confirm('¿Eliminar esta tarea?')">Eliminar</button>
+    </form>
+  </div>
+</div>

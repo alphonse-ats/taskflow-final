@@ -1,0 +1,31 @@
+<div class="auth-wrap">
+  <div class="auth-card">
+    <h2>Crea tu cuenta</h2>
+    <p class="subtitle">Empieza a organizar tu día en segundos</p>
+
+    <% if (typeof errors !== 'undefined') { %>
+      <ul class="errors">
+        <% errors.forEach(e => { %><li><%= e.msg %></li><% }) %>
+      </ul>
+    <% } %>
+
+    <form action="/auth/register" method="POST">
+      <label>Nombre
+        <input type="text" name="name" placeholder="Tu nombre"
+               value="<%= typeof old !== 'undefined' ? old.name || '' : '' %>" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" placeholder="tu@email.com"
+               value="<%= typeof old !== 'undefined' ? old.email || '' : '' %>" required>
+      </label>
+      <label>Contraseña
+        <input type="password" name="password" placeholder="Mínimo 6 caracteres" required>
+      </label>
+      <button type="submit" class="btn">Crear cuenta</button>
+    </form>
+
+    <p class="form-footer">
+      ¿Ya tienes cuenta? <a href="/auth/login">Inicia sesión</a>
+    </p>
+  </div>
+</div>

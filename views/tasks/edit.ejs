@@ -1,0 +1,27 @@
+<div class="form-card">
+  <h2>Editar tarea</h2>
+  <form action="/tasks/<%= task._id %>?_method=PUT" method="POST">
+    <label>Título
+      <input type="text" name="title" value="<%= task.title %>" required minlength="3" maxlength="100">
+    </label>
+    <label>Descripción
+      <textarea name="description" maxlength="500"><%= task.description %></textarea>
+    </label>
+    <label>Estado
+      <select name="status">
+        <% ['pending','in-progress','done'].forEach(s => { %>
+          <option value="<%= s %>" <%= task.status === s ? 'selected' : '' %>><%= s %></option>
+        <% }) %>
+      </select>
+    </label>
+    <label>Prioridad
+      <select name="priority">
+        <% ['low','medium','high'].forEach(p => { %>
+          <option value="<%= p %>" <%= task.priority === p ? 'selected' : '' %>><%= p %></option>
+        <% }) %>
+      </select>
+    </label>
+    <button type="submit" class="btn">Guardar cambios</button>
+  </form>
+  <p class="form-footer"><a href="/tasks/<%= task._id %>">← Volver al detalle</a></p>
+</div>

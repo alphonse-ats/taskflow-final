@@ -1,0 +1,35 @@
+<section class="hero">
+  <h1>Organiza tus ideas.<br>Domina tus tareas.</h1>
+  <p>TaskFlow es un gestor de tareas moderno, seguro y construido con Node.js, MongoDB y JWT. Simple, rápido, elegante.</p>
+  <div class="hero-buttons">
+    <% if (!user) { %>
+      <a class="btn" href="/auth/register">Comenzar gratis →</a>
+      <a class="btn btn-secondary" href="/auth/login">Ya tengo cuenta</a>
+    <% } else { %>
+      <a class="btn" href="/tasks">Ir a mis tareas →</a>
+      <a class="btn btn-secondary" href="/tasks/new">Crear tarea</a>
+    <% } %>
+  </div>
+</section>
+
+<div class="card" style="margin-top:1.5rem">
+  <h2 style="font-size:1.25rem;margin-bottom:1rem;font-weight:700">✨ ¿Qué puedes hacer?</h2>
+  <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;padding:0">
+    <li style="padding:1rem;background:var(--bg);border-radius:10px">
+      <strong style="display:block;margin-bottom:.35rem">🔐 Autenticación JWT</strong>
+      <span style="color:var(--text-muted);font-size:.9rem">Sesiones seguras con cookies HttpOnly y bcrypt.</span>
+    </li>
+    <li style="padding:1rem;background:var(--bg);border-radius:10px">
+      <strong style="display:block;margin-bottom:.35rem">✅ CRUD completo</strong>
+      <span style="color:var(--text-muted);font-size:.9rem">Crea, edita, marca y elimina tareas sin fricción.</span>
+    </li>
+    <li style="padding:1rem;background:var(--bg);border-radius:10px">
+      <strong style="display:block;margin-bottom:.35rem">👥 Roles</strong>
+      <span style="color:var(--text-muted);font-size:.9rem">Usuario y administrador con permisos diferenciados.</span>
+    </li>
+    <li style="padding:1rem;background:var(--bg);border-radius:10px">
+      <strong style="display:block;margin-bottom:.35rem">☁️ Desplegado</strong>
+      <span style="color:var(--text-muted);font-size:.9rem">En producción con HTTPS y MongoDB Atlas.</span>
+    </li>
+  </ul>
+</div>
